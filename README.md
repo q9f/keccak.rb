@@ -2,11 +2,13 @@
 
 This Ruby extension implements the SHA-3 ([Keccak](http://keccak.noekeon.org/)) cryptographic hashing algorithm. It is based on the reference C implementation, version 3.2. The exposed interface is almost identical to that of the `digest` standard library.
 
+This gem is a patched version of `digest-sha3` which applies [https://github.com/phusion/digest-sha3-ruby/pull/8] to resolve Ubuntu installation issues.
+
 [<img src="http://www.phusion.nl/assets/logo.png">](http://www.phusion.nl/)
 
 ## Installation
 
-    gem install digest-sha3
+    gem install digest-sha3-patched
 
 **Note**: as of version 1.1.0, digest-sha3 requires Ruby 2.2. The last version that worked on older versions was 1.0.2.
 
