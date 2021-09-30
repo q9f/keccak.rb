@@ -51,15 +51,19 @@ A part of the test suite is automatically generated from Keccak's reference test
 
 ## Warning: Keccak vs. SHA-3
 
-This gem does **not** implement the final FIPS202 standard, today known as SHA-3 but rather an early version, commonly referred to as Keccak. The reason why this is kept around, is that Ethereum uses this earler version of Keccak.
+**Note:** This gem still uses the `Digest::SHA3` namespace for reasons of backwards compatibility and long-term maintainability. See history section below.
+
+:warning: This gem does **not** implement the final FIPS202 standard, today known as SHA-3 but rather an early version, commonly referred to as Keccak. The reason why this is kept around, is that Ethereum uses this earler version of Keccak. See also: [Ethereum: Difference between keccak256 and sha3](https://ethereum.stackexchange.com/questions/30369/difference-between-keccak256-and-sha3)
 
 If you are looking for the final SHA-3 gem, please use the following: https://rubygems.org/gems/sha3
+
 
 ## History
 
 This gem was initially developed and published as `digest-sha3`: https://github.com/phusion/digest-sha3-ruby
 
-This gem was later patched multiple times
-* https://github.com/steakknife/digest-sha3-ruby (actual SHA-3)
-* https://github.com/teamhedge/digest-sha3-ruby (KECCAK)
-* https://github.com/sydneyitguy/digest-sha3-ruby (KECCAK)
+This gem was later patched multiple times:
+
+* https://github.com/teamhedge/digest-sha3-ruby (KECCAK, as `digest-sha3-patched`)
+* https://github.com/sydneyitguy/digest-sha3-ruby (KECCAK, as `digest-sha3-patched-ruby-3`)
+* https://github.com/steakknife/digest-sha3-ruby (actual SHA-3, do not use for Ethereum)
