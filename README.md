@@ -44,6 +44,7 @@ digest = Digest::SHA3.new(224)
 Run the test suite as follows:
 
 ```bash
+gem install test-unit
 make test
 ```
 
