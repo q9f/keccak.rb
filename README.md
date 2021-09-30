@@ -1,54 +1,69 @@
-# The SHA-3 (Keccak) extension for Ruby
+# The Keccak (SHA-3) extension for Ruby
 
 This Ruby extension implements the SHA-3 ([Keccak](http://keccak.noekeon.org/)) cryptographic hashing algorithm. It is based on the reference C implementation, version 3.2. The exposed interface is almost identical to that of the `digest` standard library.
 
-This gem is a patched version of `digest-sha3` which applies [https://github.com/phusion/digest-sha3-ruby/pull/8] to resolve Ubuntu installation issues.
-
-[<img src="http://www.phusion.nl/assets/logo.png">](http://www.phusion.nl/)
-
 ## Installation
 
-    gem install digest-sha3-patched
+```bash
+gem install digest-keccak
+```
 
-**Note**: as of version 1.1.0, digest-sha3 requires Ruby 2.2. The last version that worked on older versions was 1.0.2.
+**Note**: as of version `v1.1.0`, `digest-keccak` requires Ruby 2.2. `digest-keccak`version `v1.2.0` now also supports Ruby 3.0.
+
+The last version that worked on older Ruby (1.x) versions was `v1.0.2`. It can be found at the no longer maintained [digest-sha3 repository from 2015](https://github.com/phusion/digest-sha3-ruby/releases/tag/release-1.0.2).
 
 ## Usage
 
-Keccak supports 5 hash lengths: 224-bit, 256-bit, 384-bit, 512-bit and variable length. Variable length is not supported by this Ruby extension. Unless the user specifies otherwise, this Ruby extension assumes 512-bit.
+Keccak supports five hash lengths: 224-bit, 256-bit, 384-bit, 512-bit and variable length. Variable length is not supported by this Ruby extension. Unless the user specifies otherwise, this Ruby extension assumes 512-bit.
 
-    require 'digest/sha3'
+```ruby
+require 'digest/sha3'
 
-    # Generate 512-bit digest.
-    Digest::SHA3.digest("foo")       # => "\025\227\204*..."
-    Digest::SHA3.hexdigest("foo")    # => "1597842a..."
+# Generate 512-bit digest.
+Digest::SHA3.digest("foo")       # => "\025\227\204*..."
+Digest::SHA3.hexdigest("foo")    # => "1597842a..."
 
-    # Generate 224-bit digest.
-    Digest::SHA3.digest("foo", 224)       # => "\332\251M\247..."
-    Digest::SHA3.hexdigest("foo", 224)    # => "daa94da7..."
+# Generate 224-bit digest.
+Digest::SHA3.digest("foo", 224)       # => "\332\251M\247..."
+Digest::SHA3.hexdigest("foo", 224)    # => "daa94da7..."
 
-    # Use this interface to feed data in chunks. 512-bit by default.
-    digest = Digest::SHA3.new
-    digest.update("f")
-    digest.update("o")
-    digest.update("o")
-    digest.digest       # => "\025\227\204*..."
-    digest.hexdigest    # => "1597842a..."
+# Use this interface to feed data in chunks. 512-bit by default.
+digest = Digest::SHA3.new
+digest.update("f")
+digest.update("o")
+digest.update("o")
+digest.digest       # => "\025\227\204*..."
+digest.hexdigest    # => "1597842a..."
 
-    # You can pass a hash length to the constructor.
-    digest = Digest::SHA3.new(224)
+# You can pass a hash length to the constructor.
+digest = Digest::SHA3.new(224)
+```
 
 ## Running the test suite
 
 Run the test suite as follows:
 
-    make test
+```bash
+make test
+```
 
 A part of the test suite is automatically generated from Keccak's reference test suite.
 
-## Warning
+## Warning: Keccak vs. SHA-3
 
-Do not use SHA-3 for hashing passwords. Do not even use SHA-3 + salt for hashing passowords. Use a [slow hash](http://codahale.com/how-to-safely-store-a-password/) instead.
+**Note:** This gem still uses the `Digest::SHA3` namespace for reasons of backwards compatibility and long-term maintainability. See history section below.
 
-## See also
+:warning: This gem does **not** implement the final FIPS202 standard, today known as SHA-3 but rather an early version, commonly referred to as Keccak. The reason why this is kept around, is that Ethereum uses this earler version of Keccak. See also: [Ethereum: Difference between keccak256 and sha3](https://ethereum.stackexchange.com/questions/30369/difference-between-keccak256-and-sha3)
 
-[node-sha3](https://github.com/phusion/node-sha3)
+If you are looking for the final SHA-3 gem, please use the following: https://rubygems.org/gems/sha3
+
+
+## History
+
+This gem was initially developed and published as `digest-sha3`: https://github.com/phusion/digest-sha3-ruby
+
+This gem was later patched multiple times:
+
+* https://github.com/teamhedge/digest-sha3-ruby (KECCAK, as `digest-sha3-patched`)
+* https://github.com/sydneyitguy/digest-sha3-ruby (KECCAK, as `digest-sha3-patched-ruby-3`)
+* https://github.com/steakknife/digest-sha3-ruby (actual SHA-3, do not use for Ethereum)
