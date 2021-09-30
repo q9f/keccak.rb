@@ -1,9 +1,9 @@
 require File.expand_path('lib/digest/sha3/version')
 
 Gem::Specification.new do |s|
-  s.name = "digest-sha3"
+  s.name = "digest-keccak"
   s.version = Digest::SHA3::Version::STRING
-  s.summary = "The SHA-3 (Keccak) hash"
+  s.summary = "The SHA-3 (Keccak) hash used by Ethereum"
   s.email = "ruby@q9f.cc"
   s.homepage = "https://github.com/q9f/digest-sha3-ruby"
   s.description = "The SHA-3 (Keccak) hash."
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
     "README.md",
     "LICENSE",
     "Makefile",
-    "digest-sha3-patched.gemspec",
+    "digest-keccak.gemspec",
     "ext/**/*.{c,h,rb}",
     "lib/**/*"
   ]
