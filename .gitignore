@@ -3,3 +3,6 @@
 *.bundle
 Makefile
 test/test_vectors.rb
+*.gem
+*.log
+*.so
