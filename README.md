@@ -1,6 +1,11 @@
 # The Keccak (SHA-3) digest for Ruby
 
-This Ruby extension implements the SHA-3 ([Keccak](http://keccak.noekeon.org/)) cryptographic hashing algorithm. It is based on the reference C implementation, version 3.2. The exposed interface is almost identical to that of the `digest` standard library.
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/q9f/keccak.rb/Build/main)
+![GitHub top language](https://img.shields.io/github/languages/top/q9f/keccak.rb)
+![GitHub release](https://img.shields.io/github/v/release/q9f/keccak.rb)
+![Gem](https://img.shields.io/gem/v/keccak)
+
+This Ruby extension exposes the [Keccak](http://keccak.noekeon.org/) (SHA-3) digest C bindings in the non-final version used by Ethereum. It is based on the reference `C` implementation, version 3.2. The exposed interface is almost identical to that of the `digest` standard library.
 
 ## Installation
 
