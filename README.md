@@ -1,21 +1,22 @@
 # The Keccak (SHA-3) digest for Ruby
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/q9f/keccak.rb/Build/main)
-![GitHub top language](https://img.shields.io/github/languages/top/q9f/keccak.rb)
-![GitHub release](https://img.shields.io/github/v/release/q9f/keccak.rb)
-![Gem](https://img.shields.io/gem/v/keccak)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/q9f/keccak.rb/Build/main)](https://github.com/q9f/keccak.rb/actions)
+[![GitHub top language](https://img.shields.io/github/languages/top/q9f/keccak.rb?color=black)](https://github.com/q9f/keccak.rb/pulse)
+[![GitHub release](https://img.shields.io/github/v/release/q9f/keccak.rb?color=red)](https://github.com/q9f/keccak.rb/releases/latest)
+[![Gem](https://img.shields.io/gem/v/keccak?color=red)](https://rubygems.org/gems/keccak)
+[![License](https://img.shields.io/github/license/q9f/keccak.rb.svg?color=black)](LICENSE)
 
 This Ruby extension exposes the [Keccak](http://keccak.noekeon.org/) (SHA-3) digest C bindings in the non-final version used by Ethereum. It is based on the reference `C` implementation, version 3.2. The exposed interface is almost identical to that of the `digest` standard library.
 
 ## Installation
 
 ```bash
-gem install digest-keccak
+gem install keccak
 ```
 
-**Note**: as of version `v1.1.0`, `digest-keccak` requires Ruby 2.2. `digest-keccak`version `v1.2.0` now also supports Ruby 3.0.
+**Note**: as of version `v1.1.0`, `digest-sha3` requires Ruby 2.2. `keccak`version `v1.2.0` now also supports Ruby 3.0.
 
-The last version that worked on older Ruby (1.x) versions was `v1.0.2`. It can be found at the no longer maintained [digest-sha3 repository from 2015](https://github.com/phusion/digest-sha3-ruby/releases/tag/release-1.0.2).
+The last version that worked on older Ruby (1.x) versions was `v1.0.2`. It can be found at the no longer maintained [`digest-sha3` repository from 2015](https://github.com/phusion/digest-sha3-ruby/releases/tag/release-1.0.2).
 
 ## Usage
 
