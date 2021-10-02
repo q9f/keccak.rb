@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     'homepage_uri'    => 'https://github.com/q9f/keccak.rb',
     'source_code_uri' => 'https://github.com/q9f/keccak.rb',
-    'bug_tracker_uri' =>
-      'https://github.com/q9f/keccak.rb/issues',
+    'github_repo'     => 'https://github.com/q9f/keccak.rb',
+    'bug_tracker_uri' => 'https://github.com/q9f/keccak.rb/issues',
   }.freeze
   spec.require_paths = ['lib']
   spec.files = Dir[
