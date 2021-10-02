@@ -3,7 +3,7 @@
 lib = File.expand_path('lib', __dir__).freeze
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include? lib
 
-require 'digest/sha3'
+require 'digest/sha3/version'
 
 Gem::Specification.new do |spec|
   spec.name = "keccak"
