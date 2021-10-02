@@ -9,7 +9,7 @@
 #define MAX_DIGEST_SIZE 64
 #define DEFAULT_DIGEST_LEN 512
 
-static int sha3_init_func(hashState *ctx);
+static int sha3_init_func();
 static void sha3_update_func(hashState *ctx, unsigned char *str, size_t len);
 static int sha3_finish_func(hashState *ctx, unsigned char *digest);
 
@@ -33,8 +33,8 @@ static rb_digest_metadata_t sha3 = {
    we override initialize to do custom hash size, so we don't care too much here.
 */
 static int
-sha3_init_func(hashState *ctx) {
-  // Just return a 1 ' successful' we override the init function
+sha3_init_func() {
+  // Just return a 1 'successful' we override the init function
   // so this is not necessary
   // the base class alloc calls this to initialize the algorithm
   return 1;

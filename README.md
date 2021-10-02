@@ -10,17 +10,22 @@ This Ruby extension exposes the [Keccak](http://keccak.noekeon.org/) (SHA-3) dig
 
 ## Installation
 
+The gem is called `keccak`.
+
 ```bash
+bundle add keccak
 gem install keccak
 ```
 
-**Note**: as of version `v1.1.0`, `digest-sha3` requires Ruby 2.2. `keccak`version `v1.2.0` now also supports Ruby 3.0.
+```ruby
+gem 'keccak', '~> 1.2'
+```
 
-The last version that worked on older Ruby (1.x) versions was `v1.0.2`. It can be found at the no longer maintained [`digest-sha3` repository from 2015](https://github.com/phusion/digest-sha3-ruby/releases/tag/release-1.0.2).
+**Note**: as of version `v1.1.0`, `digest-sha3` (historic name) requires Ruby 2.2. The new `keccak` version `v1.2.0` now also supports Ruby 3.0. The last version that worked on older Ruby (1.x) versions was `v1.0.2`. It can be found at the no longer maintained [`digest-sha3` repository from 2015](https://github.com/phusion/digest-sha3-ruby/releases/tag/release-1.0.2).
 
 ## Usage
 
-Keccak supports five hash lengths: 224-bit, 256-bit, 384-bit, 512-bit and variable length. Variable length is not supported by this Ruby extension. Unless the user specifies otherwise, this Ruby extension assumes 512-bit.
+This gem extends the `digest/*` module by a `digest/sha3` class (historic reference, see history section below).
 
 ```ruby
 require 'digest/sha3'
@@ -45,12 +50,14 @@ digest.hexdigest    # => "1597842a..."
 digest = Digest::SHA3.new(224)
 ```
 
+Keccak supports five hash lengths: 224-bit, 256-bit, 384-bit, 512-bit and variable length. Variable length is not supported by this Ruby extension. Unless the user specifies otherwise, this Ruby extension assumes 512-bit.
+
 ## Running the test suite
 
 Run the test suite as follows:
 
 ```bash
-gem install test-unit
+bundle install
 make test
 ```
 
@@ -58,12 +65,9 @@ A part of the test suite is automatically generated from Keccak's reference test
 
 ## Warning: Keccak vs. SHA-3
 
-**Note:** This gem still uses the `Digest::SHA3` namespace for reasons of backwards compatibility and long-term maintainability. See history section below.
-
 :warning: This gem does **not** implement the final FIPS202 standard, today known as SHA-3 but rather an early version, commonly referred to as Keccak. The reason why this is kept around, is that Ethereum uses this earler version of Keccak. See also: [Ethereum: Difference between keccak256 and sha3](https://ethereum.stackexchange.com/questions/30369/difference-between-keccak256-and-sha3)
 
 If you are looking for the final SHA-3 gem, please use the following: https://rubygems.org/gems/sha3
-
 
 ## History
 
@@ -74,3 +78,4 @@ This gem was later patched multiple times:
 * https://github.com/teamhedge/digest-sha3-ruby (KECCAK, as `digest-sha3-patched`)
 * https://github.com/sydneyitguy/digest-sha3-ruby (KECCAK, as `digest-sha3-patched-ruby-3`)
 * https://github.com/steakknife/digest-sha3-ruby (actual SHA-3, do not use for Ethereum)
+* https://github.com/kotovalexarian/digest-keccak/ (KECCAK, as `digest-keccak`)

@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 module Digest
   class SHA3
-    module Version
-      STRING = "1.2.0"
-    end
+    VERSION = '1.2.1'
   end
 end

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # This will generate a test suite.
 # Based on python-sha3's test suite.
