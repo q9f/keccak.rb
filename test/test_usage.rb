@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test/unit'
 
 class SHA3UsageTest < Test::Unit::TestCase
