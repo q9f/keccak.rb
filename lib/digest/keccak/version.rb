@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Digest
-  class SHA3
-    VERSION = '1.2.2'
+  class Keccak
+    VERSION = '1.3.0'
   end
 end
