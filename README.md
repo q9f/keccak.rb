@@ -27,7 +27,7 @@ gem 'keccak', '~> 1.3'
 
 ## Usage
 
-This gem extends the `digest/*` module by a `digest/keccak` class (historic reference, see history section below).
+This gem extends the `digest/*` module by a `digest/keccak` class.
 
 ```ruby
 require 'digest/keccak'
