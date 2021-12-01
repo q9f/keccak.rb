@@ -19,7 +19,7 @@ def generate
 
     require 'test/unit'
 
-    class SHA3Tests < Test::Unit::TestCase
+    class KeccakTests < Test::Unit::TestCase
   }
 
   FILES.each do |path, hashlen|
@@ -34,7 +34,7 @@ def generate
           name = File.basename(path).split('.')[0]
           puts %Q{
             def test_#{name}_#{length}
-              inst = Digest::SHA3.new(#{hashlen})
+              inst = Digest::Keccak.new(#{hashlen})
               inst.update(#{msg_raw.inspect})
               assert_equal #{md.inspect}, inst.hexdigest
             end

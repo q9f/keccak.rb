@@ -2,7 +2,7 @@
 
 $LOAD_PATH.unshift(File.expand_path("lib"))
 $LOAD_PATH.unshift(File.expand_path("ext"))
-require 'digest/sha3'
+require 'digest/keccak'
 require File.expand_path('test/test_usage')
 require File.expand_path('test/test_vectors')
 require File.expand_path('test/test_new')

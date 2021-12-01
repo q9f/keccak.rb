@@ -2,9 +2,9 @@
 
 require 'test/unit'
 
-class SHA3UsageTest < Test::Unit::TestCase
+class KeccakUsageTest < Test::Unit::TestCase
   def init(hashsize = 512)
-    @digest = Digest::SHA3.new(hashsize)
+    @digest = Digest::Keccak.new(hashsize)
   end
 
   def test_copy
@@ -18,7 +18,7 @@ class SHA3UsageTest < Test::Unit::TestCase
 
   def test_class_methods
     assert_equal 'a9cab59eb40a10b246290f2d6086e32e3689faf1d26b470c899f2802',
-      Digest::SHA3.hexdigest("\xcc", 224)
+      Digest::Keccak.hexdigest("\xcc", 224)
   end
 
   def test_update
