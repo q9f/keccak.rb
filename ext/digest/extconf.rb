@@ -28,4 +28,4 @@ have_header! 'string.h'
 
 have_func! 'rb_str_set_len'
 
-create_makefile 'digest/sha3' or exit 1
+create_makefile 'digest/keccak' or exit 1
