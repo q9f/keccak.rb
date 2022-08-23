@@ -5,7 +5,7 @@ require 'mkmf'
 
 def cflags(*args)
   args.each do |str|
-    $CFLAGS += " #{str.shellescape} "
+    $CFLAGS += (ENV['OS'] == "Windows_NT") ? " #{str} " : " #{str.shellescape} "
   end
 end
 
