@@ -1,6 +1,6 @@
 # The Keccak (SHA3) digest for Ruby
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/q9f/keccak.rb/Build/main)](https://github.com/q9f/keccak.rb/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/q9f/keccak.rb/build.yml?branch=main)](https://github.com/q9f/keccak.rb/actions)
 [![GitHub top language](https://img.shields.io/github/languages/top/q9f/keccak.rb?color=black)](https://github.com/q9f/keccak.rb/pulse)
 [![GitHub release](https://img.shields.io/github/v/release/q9f/keccak.rb)](https://github.com/q9f/keccak.rb/releases/latest)
 [![Gem](https://img.shields.io/gem/v/keccak?color=red)](https://rubygems.org/gems/keccak)
