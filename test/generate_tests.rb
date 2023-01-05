@@ -5,11 +5,11 @@
 # Based on python-sha3's test suite.
 
 FILES = [
-  ['test/data/ShortMsgKAT_224.txt', 224],
-  ['test/data/ShortMsgKAT_256.txt', 256],
-  ['test/data/ShortMsgKAT_384.txt', 384],
-  ['test/data/ShortMsgKAT_512.txt', 512],
-  ['test/data/LongMsgKAT_224.txt', 224],
+  ["test/data/ShortMsgKAT_224.txt", 224],
+  ["test/data/ShortMsgKAT_256.txt", 256],
+  ["test/data/ShortMsgKAT_384.txt", 384],
+  ["test/data/ShortMsgKAT_512.txt", 512],
+  ["test/data/LongMsgKAT_224.txt", 224],
 ]
 
 def generate
@@ -23,15 +23,15 @@ def generate
   }
 
   FILES.each do |path, hashlen|
-    contents = File.read(path).split('Len = ')
+    contents = File.read(path).split("Len = ")
     contents.each do |test|
       lines = test.split("\n")
       if !lines.empty? && lines[0] !~ /^#/
         length = lines[0].to_i
         if length % 8 == 0 && length != 0
-          msg_raw = [lines[1].split(' = ').last].pack("H*")
-          md = lines[2].split(' = ').last.downcase
-          name = File.basename(path).split('.')[0]
+          msg_raw = [lines[1].split(" = ").last].pack("H*")
+          md = lines[2].split(" = ").last.downcase
+          name = File.basename(path).split(".")[0]
           puts %Q{
             def test_#{name}_#{length}
               inst = Digest::Keccak.new(#{hashlen})
