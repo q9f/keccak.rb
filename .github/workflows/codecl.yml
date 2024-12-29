@@ -23,6 +23,7 @@ jobs:
         language:
           - ruby
           - c
+        ruby: ['3.3', '3.4']
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v4
@@ -36,7 +37,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: "Run rufo code formatting checks"
         run: |
