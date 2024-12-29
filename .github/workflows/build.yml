@@ -12,11 +12,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ['3.3', '3.4']
     steps:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.3
+        ruby-version: ${{ matrix.ruby }}
     - name: Install Dependencies
       run: |
         gem install test-unit
