@@ -10,6 +10,8 @@
 *.gem
 *.log
 *.rbc
+*.bundle
+*.bundle.dSYM
 /.config
 /.rake_tasks~
 /coverage/
