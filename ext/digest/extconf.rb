@@ -27,5 +27,6 @@ have_header! "stdio.h"
 have_header! "string.h"
 
 have_func! "rb_str_set_len"
+have_func "rb_digest_make_metadata", "ruby/digest.h"
 
 create_makefile "digest/keccak" or exit 1
