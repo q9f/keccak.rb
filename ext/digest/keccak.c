@@ -144,7 +144,11 @@ Init_keccak() {
 
 	cKeccak = rb_define_class_under(mDigest, "Keccak", cDigest_Base);
 
+#ifdef HAVE_RB_DIGEST_MAKE_METADATA
+	rb_iv_set(cKeccak, "metadata", rb_digest_make_metadata(&keccak));
+#else
 	rb_iv_set(cKeccak, "metadata", Data_Wrap_Struct(0, 0, 0, (void *)&keccak));
+#endif
 
   rb_define_method(cKeccak, "initialize", rb_keccak_initialize, -1);
   rb_define_method(cKeccak, "digest_length", rb_keccak_digest_length, 0);
