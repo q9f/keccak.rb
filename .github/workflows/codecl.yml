@@ -36,7 +36,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: '3.3'
           bundler-cache: true
       - name: "Run rufo code formatting checks"
         run: |
