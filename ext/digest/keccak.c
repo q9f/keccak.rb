@@ -1,4 +1,5 @@
 #include "ruby.h"
+#include <stdbool.h>
 #ifdef HAVE_RUBY_DIGEST_H
 #include "ruby/digest.h"
 #else
