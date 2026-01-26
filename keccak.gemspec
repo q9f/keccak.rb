@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.email = "%w[ruby@q9f.cc]"
   spec.extensions << "ext/digest/extconf.rb"
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 3.0", "< 5.0"
   spec.license = "Apache-2.0"
   spec.metadata = {
     "homepage_uri" => "https://github.com/q9f/keccak.rb",
