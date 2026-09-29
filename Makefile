@@ -4,6 +4,11 @@
 # coverage/ directory it writes matches the target that writes it.
 .PHONY: all clean test coverage
 
+# A generator that dies after the shell created the redirect target leaves a
+# truncated test_vectors.rb that make will not regenerate, because its mtime is
+# newer than its prerequisites. Delete the target on failure instead.
+.DELETE_ON_ERROR:
+
 # The two lines keccak_init cannot reach: `case FAIL:` and `default:`. The
 # vendored Init() returns only SUCCESS or BAD_HASHLEN, and HashReturn has no
 # fourth value, so both arms are dead. Reaching them would mean editing a
@@ -51,4 +56,5 @@ coverage:
 	    if (count == "#####") { uncovered++; printf "  uncovered line %d\n", line } } \
 	  END { printf "C   : ext/digest/keccak.c  %d of %d reachable lines (%.2f%%), %d excluded\n", \
 	        total - uncovered, total, total ? 100.0 * (total - uncovered) / total : 0, excluded; \
+	        if (total == 0) { print "  no executable lines measured: gcov produced no data"; exit 1 } \
 	        if (uncovered) exit 1 }' ext/digest/keccak.c.gcov

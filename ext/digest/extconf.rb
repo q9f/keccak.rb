@@ -29,7 +29,9 @@ cflags "-fvisibility=hidden"
 # inlining on, gcc folds keccak_finish_func into its only caller and gcov then
 # reports the callee's body unexecuted while marking the call site "2196*".
 # That reads as a missing test and is not one.
-if ENV["COVERAGE"]
+# Tested against "0" and "" as well as nil, matching test/test_all.rb: an
+# instrumented build from `COVERAGE=0` would be a silent surprise.
+if !["", "0"].include?(ENV["COVERAGE"].to_s)
   cflags "--coverage", "-O0", "-fno-inline"
   $LDFLAGS += " --coverage"
 end
