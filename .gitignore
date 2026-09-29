@@ -1,9 +1,13 @@
 *.DS_Store
 
 /test/test_vectors.rb
+/test/test_vectors.rb.new
 /ext/digest/Makefile
 /ext/digest/keccak.so
 /ext/digest/mkmf.log
+/ext/digest/*.gcno
+/ext/digest/*.gcda
+/ext/digest/*.gcov
 
 *.o
 *.so

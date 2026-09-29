@@ -54,4 +54,49 @@ class KeccakUsageTest < Test::Unit::TestCase
     a = init(512)
     assert_equal "0eab42de4c3ceb9235fc91acffe746b29c29a8c366b7c60e4e67c466f36a4304c00fa9caf9d87976ba469bcbe06713b435f091ef2769fb160cdab33d3670680e", a.hexdigest
   end
+
+  # The suite below always passed an explicit length, so the default branch in
+  # rb_keccak_initialize was never executed. The default is 512 and is frozen
+  # by SPEC D4; changing it changes the output of existing correct code.
+  def test_default_hash_length
+    assert_equal 64, Digest::Keccak.new.digest_length
+    assert_equal Digest::Keccak.new(512).hexdigest, Digest::Keccak.new.hexdigest
+  end
+
+  # digest_length and block_length had no caller in the suite at all.
+  # Both answer in bytes: digest_length is hashlen / 8, block_length is the
+  # sponge rate, (1600 - 2 * hashlen) / 8.
+  def test_digest_length
+    assert_equal [28, 32, 48, 64],
+      [224, 256, 384, 512].map { |n| Digest::Keccak.new(n).digest_length }
+  end
+
+  def test_block_length
+    assert_equal [144, 136, 104, 72],
+      [224, 256, 384, 512].map { |n| Digest::Keccak.new(n).block_length }
+  end
+
+  # Variable-length (XOF) output is rejected at the Ruby boundary, SPEC D5.
+  def test_variable_length_is_rejected
+    error = assert_raise(ArgumentError) { Digest::Keccak.new(0) }
+    assert_equal "Unsupported hash length", error.message
+  end
+
+  # Anything outside {224, 256, 384, 512} reaches the vendored Init(), which
+  # answers BAD_HASHLEN. SPEC invariant 4.
+  def test_bad_hash_length_is_rejected
+    [1, 128, 160, 225, 1024, -1].each do |n|
+      error = assert_raise(ArgumentError) { Digest::Keccak.new(n) }
+      assert_equal "Bad hash length (must be 0, 224, 256, 384 or 512)",
+        error.message, "hash length #{n}"
+    end
+  end
+
+  # lib/digest/keccak/version.rb is loaded by nothing else: `require
+  # "digest/keccak"` loads the compiled extension only. Without this the file
+  # is absent from the coverage report rather than uncovered by it.
+  def test_version
+    assert_match(/\A\d+\.\d+\.\d+\z/, Digest::Keccak::VERSION)
+    assert_true Digest::Keccak::VERSION.frozen?
+  end
 end

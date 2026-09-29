@@ -22,6 +22,20 @@ cflags "-Wall"
 cflags "-Wextra"
 cflags "-fvisibility=hidden"
 
+# Coverage build, opt-in through `make coverage`. It stays off by default so
+# `gem install` neither ships .gcno files nor pays for instrumentation.
+#
+# -O0 and -fno-inline are part of the measurement, not a preference: with
+# inlining on, gcc folds keccak_finish_func into its only caller and gcov then
+# reports the callee's body unexecuted while marking the call site "2196*".
+# That reads as a missing test and is not one.
+# Tested against "0" and "" as well as nil, matching test/test_all.rb: an
+# instrumented build from `COVERAGE=0` would be a silent surprise.
+if !["", "0"].include?(ENV["COVERAGE"].to_s)
+  cflags "--coverage", "-O0", "-fno-inline"
+  $LDFLAGS += " --coverage"
+end
+
 have_header! "ruby/digest.h"
 have_header! "stdio.h"
 have_header! "string.h"
