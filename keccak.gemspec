@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
     "source_code_uri" => "https://github.com/q9f/keccak.rb",
     "github_repo" => "https://github.com/q9f/keccak.rb",
     "bug_tracker_uri" => "https://github.com/q9f/keccak.rb/issues",
+    "rubygems_mfa_required" => "true",
   }.freeze
   spec.require_paths = ["lib"]
   spec.files = Dir[
